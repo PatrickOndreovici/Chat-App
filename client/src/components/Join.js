@@ -1,49 +1,50 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Flex, Box, Input, Button, Center } from '@chakra-ui/react'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
+import {
+  Flex,
+  Box,
+  Input,
+  Button,
+  Center,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 const Join = () => {
-  const [username, setUsername] = useState('')
-  const [roomName, setRoomName] = useState('')
+  const [username, setUsername] = useState("");
+  const [roomName, setRoomName] = useState("");
 
   return (
-    <Flex
-      w='100%'
-      h='100vh'
-      flexDirection='column'
-      justifyContent='center'
-      alignItems='center'
-    >
-      <Box>
+    <Center h="100vh">
+      <Stack spacing={3} w="30%">
         <Input
-          placeholder='username'
-          m='10px'
+          placeholder="Username"
+          size="md"
           onChange={(event) => {
-            setUsername(event.target.value)
+            setUsername(event.target.value);
           }}
         />
         <Input
-          placeholder='room'
-          m='10px'
+          placeholder="Room name"
+          size="md"
           onChange={(event) => {
-            setRoomName(event.target.value)
+            setRoomName(event.target.value);
           }}
         />
-        <Center>
-          <Link
-            to={`chat/?username=${username}&room=${roomName}`}
-            onClick={(event) => {
-              if (!username || !roomName) {
-                return event.preventDefault()
-              }
-              return null
-            }}
-          >
-            <Button>Join</Button>
-          </Link>
-        </Center>
-      </Box>
-    </Flex>
-  )
-}
+        <Link
+          to={`chat/?username=${username}&room=${roomName}`}
+          onClick={(event) => {
+            if (!username || !roomName) {
+              return event.preventDefault();
+            }
+            return null;
+          }}
+        >
+          <Button>Join</Button>
+        </Link>
+      </Stack>
+    </Center>
+  );
+};
 
-export default Join
+export default Join;
